@@ -20,20 +20,19 @@ void push() {
 }
 
 void pop() {
-    if (top == -1) {
+    if (is_empty()) {
         printf("Stack is empty, cannot remove any element.\n\n");
     } else {
         int deleted = stack[top];
         top -= 1;
-        stack[top] = NULL;
         printf("%d deleted from stack.\n\n", deleted);
     }
 }
 
 void display_stack() {
-    if (top == -1) {
+    if (is_empty()) {
         printf("Stack is empty.\n\n");
-        return 0;
+        return;
     }
 
     printf("Displaying stack...\n");
@@ -43,16 +42,25 @@ void display_stack() {
 }
 
 void display_top() {
-    if (top == -1) {
+    if (is_empty()) {
         printf("Stack is empty.\n\n");
-        return 0;
+        return;
     }
 
     printf("Top element = %d\n\n", stack[top]);
 }
 
+int size() {
+    return top + 1;
+}
+
+int is_empty() {
+    if (top == -1) return 1;
+    else return 0;
+}
+
 void main() {
-    printf("Stack Operations\n1. Push\n2. Pop\n3. Display\n4. Top\n5. Exit program\n\n");
+    printf("Stack Operations\n1. Push\n2. Pop\n3. Display\n4. Top\n5. Size of stack\n6. Exit Program\n\n");
     int choice;
 
     while (1) {
@@ -77,8 +85,13 @@ void main() {
                 break;
 
             case 5:
+                int s = size();
+                printf("Stack has %d elements\n\n", s);
+                break;
+
+            case 6:
                 printf("Program terminated successfully.\n");
-                return 0;
+                return;
 
             default:
                 printf("Invalid input. Please try again.\n");
