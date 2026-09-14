@@ -54,9 +54,23 @@ void display() {
     printf("\n\n");
 }
 
+int is_empty() {
+    if (front == -1)
+        return 1;
+    else
+        return 0;
+}
+
+int is_full() {
+    if (rear = MAX - 1)
+        return 1;
+    else
+        return 0;
+}
+
 int main() {
     int choice;
-    printf("Queue Operations\n1. Enqueue\n2. Dequeuen\n3. Peek\n4. Display\n5. Exit\n\n");
+    printf("Queue Operations\n1. Enqueue\n2. Dequeuen\n3. Peek\n4. Display\n5. Is queue empty?\n6. Is queue full?\n7. Exit\n\n");
 
     while (1) {
         printf("Enter your choice: ");
@@ -80,7 +94,15 @@ int main() {
                 break;
 
             case 5:
-                printf("Program terminated.\n");
+                printf("Queue is ", is_empty() ? " empty" : " not empty", "\n\n");
+                break;
+            
+            case 6:
+                printf("Queue is ", is_full() ? " full" : " not full", "\n\n");
+                break;
+
+            case 7:
+                printf("Terminating program...");
                 return 0;
             
             default:
